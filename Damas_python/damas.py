@@ -53,15 +53,32 @@ for row in chess_board:
 
         if square.is_white:
             surf.fill((255, 255, 255))
+            pg.draw.rect(surf, ("black"), [0, 0, 87, 87], 2)
         else:
             surf.fill((0, 0, 0))
+            pg.draw.rect(surf, ("black"), [0, 0, 87, 87], 2)
 
         rect = surf.get_rect()
+
         tela.blit(surf, (square.x_start, square.y_start))
         pg.display.flip()
 
 
 pg.display.set_caption("Jogo de Damas")
+
+
+def highlight_selected_square(pos):
+    print(pos)
+    return pos
+
+
+def get_square_for_position(pos):
+    for row in chess_board:
+        if row[0].y_start < pos[1] < row[0].y_start + row[0].width_height:
+            for square in row:
+                if square.x_start < pos[0] < square.x_start + square.width_height:
+                    return square
+
 
 while running:
     for event in pg.event.get():
@@ -74,11 +91,3 @@ while running:
             highlight_selected_square(get_square_for_position(pos))
         elif event.type == QUIT:
             running = False
-
-
-def get_square_for_position(pos):
-    for row in chess_board:
-        if row[0].y_start < pos[1] < row[0].y_start + row[0].width_height:
-            for square in row:
-                if square.x_start < pos[0] < square.x_start + square.width_height:
-                    return square
