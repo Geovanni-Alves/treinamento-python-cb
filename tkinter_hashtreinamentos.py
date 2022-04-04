@@ -39,10 +39,31 @@ botao = Button(janela, text="Buscar cotações Dolar/Euro/BTC",
 botao.grid(column=0, row=1, padx=10, pady=10)
 texto_cotacoes = Label(janela, text="")
 texto_cotacoes.grid(column=0, row=2, padx=10, pady=10)
-label_combobox = Label(janela, text="Escolha um estado")
-label_combobox.grid(column=0, row=3)
-combo_box = Combobox(janela, text="Testando o combobox",
-                     values=["GO", "SP", "PA", "BA"])
+# label_combobox = Label(janela, text="Escolha um estado")
+# label_combobox.grid(column=0, row=3)
+# combo_box = Combobox(janela, text="Testando o combobox",
+#                      values=["GO", "SP", "PA", "BA"])
 
-combo_box.grid(column=0, row=4, padx=10, pady=10)
+#combo_box.grid(column=0, row=4, padx=10, pady=10)
+
+
+def testVal(inStr, acttyp):
+    if acttyp == '1':  # insert
+        if not inStr.isdigit():
+            return False
+    return True
+
+
+entrada = Entry(janela, validate="key")
+entrada.grid(column=0, row=3, padx=5, pady=5)
+entrada['validatecommand'] = (entrada.register(testVal), '%P', '%d')
+# entrada.pack()
+
+
+#entry = Entry(root, validate="key")
+
+
+# root.mainloop()
+
+
 janela.mainloop()

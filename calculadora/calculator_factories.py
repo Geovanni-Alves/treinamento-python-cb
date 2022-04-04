@@ -20,13 +20,14 @@ def make_label(root) -> tk.Label:
 
 
 def make_display(root) -> tk.Entry:
-    display = tk.Entry(root)
+    display = tk.Entry(root, validate="key")
     display.grid(row=1, column=0, columnspan=5, sticky="news", pady=(0, 10))
     display.config(
         font=("Helvetica", 40, "bold"),
         justify="right", bd=1, relief="flat",
         highlightthickness=1, highlightcolor="#ccc"
     )
+
     display.bind("<Control-a>", _display_control_a)
     return display
 

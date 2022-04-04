@@ -58,6 +58,7 @@ class Calculator:
         self.display.delete(0, "end")
 
     def add_text_to_display(self, event=None):
+        display = self.display
         self.display.insert("end", event.widget["text"])
 
     def calculate(self, event=None):
